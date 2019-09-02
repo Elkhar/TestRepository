@@ -31,8 +31,9 @@ public class BaseTest {
 	public WebDriver driver;
 	public String chrome = "CHROME";
 	String text = "Please include an '@' in the email address. 'test' is missing an '@'";
-	String VALID_EMAIL = "filipstajk@gmail.com";
-	String VALID_PASSWORD = "Test";
+	// For testing purpose, we can add correct credentials
+	String VALID_EMAIL = "Test@email.com";
+	String VALID_PASSWORD = "TestPassword";
 	String INVALID_EMAIL = "test";
 	String INVALID_PASSWORD = "test";
 
@@ -41,7 +42,6 @@ public class BaseTest {
 	String RandomDescription = "testDescription" + "" + RandomStringUtils.randomAlphabetic(random);
 	String RandomExpectedResult = "testExpectedResult" + "" + RandomStringUtils.randomAlphabetic(random);
 	String RandomUseCase = "testUseCase" + "" + RandomStringUtils.randomAlphabetic(random);
-
 
 	protected void clickUseCases() {
 		home.testCases = driver.findElement(By.xpath("//*[@id=\"root\"]/div/div[2]/div/div/div[2]/div[2]/div/a/div"));
@@ -52,8 +52,7 @@ public class BaseTest {
 		useCase.createUseCase = driver.findElement(By.xpath("//*[@id=\"root\"]/div/div[2]/div/a[2]"));
 		useCase.createUseCase.click();
 	}
-	
-		
+
 //	protected void clickTitle(String title) {
 //		useCase.title = driver.findElement(By.name("title"));
 //		useCase.title.sendKeys(title);
@@ -110,14 +109,13 @@ public class BaseTest {
 		login.submitButton = driver.findElement(By.xpath("/html/body/div/div/div[2]/div/div/div/div/form/button"));
 
 	}
-	
+
 	public void setUpTestCases() throws MalformedURLException {
 		useCase.title = driver.findElement(By.name("title"));
 		useCase.description = driver.findElement(By.name("description"));
 		useCase.expectedResult = driver.findElement(By.name("expected_result"));
 		useCase.useCase = driver.findElement(By.xpath("//*[@id=\"stepId\"]"));
 	}
-
 
 	@AfterMethod
 	public void tearDown() {
